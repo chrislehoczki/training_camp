@@ -13,13 +13,13 @@ jQuery(function ($) {
 
 
 
-    	$(".site-header").css("background-color", "black").css("opacity", "0.9").css("top", "0px")
+    	$(".site-header").css("background-color", "black").css("opacity", "0.9").css("top", "50px")
     	$(".site-header").find("h1").css("margin-top", "20px")
     	$(".site-header").find("ul").css("margin-top", "-90px")
 
     }
     else if (offset<400) {
-    	$(".site-header").css("background-color", "").css("opacity", "1").css("top", "60px")
+    	$(".site-header").css("background-color", "").css("opacity", "1").css("top", "200px")
     	$(".site-header").find("h1").css("margin-top", "0px")
     	$(".site-header").find("ul").css("margin-top", "0px")
     }

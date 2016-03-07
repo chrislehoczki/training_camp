@@ -140,36 +140,9 @@ article.post-gallery h2 {
 
 
 /* Header */
-
-.full-width {
-	width: 100%;
-	top: 0;
-	position: fixed;
-	background-color: black;
-	z-index: 1000;
-	height: 50px;
-}
-
-.social-links {
-	margin: 0px auto;
-	width: 300px;
-	text-align: center;
-	z-index: 1000;
-}
-.social-links li {
-	display: inline;
-}
-
-.social-links li img {
-	width: 30px;
-	height: 30px;
-	margin: 10px;
-}
-
-
 .site-header {
 	position: fixed;
-	top: 200px;
+	top: 60px;
 	left: 0px;
 	width: 100%;
 	z-index: 999;

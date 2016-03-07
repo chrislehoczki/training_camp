@@ -5,9 +5,11 @@ function learningWordPress_resources() {
 	//wp_enqueue_style('style', get_stylesheet_uri());
 	
 	wp_enqueue_style( 'bootstrap','https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css',false,'1.1','all');
+	wp_enqueue_style( 'fontawesome','https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css',false,'1.1','all' );
 	wp_enqueue_style( 'flexslider', get_template_directory_uri() . '/css/flexslider.css',false,'1.1','all');
 	wp_enqueue_style( 'style', get_template_directory_uri() . '/css/style.css',false,'1.1','all');
-	
+
+
 	wp_enqueue_script( 'script', get_template_directory_uri() . '/js/jquery.flexslider.js', array ( 'jquery' ), 1.1, true);
 	wp_enqueue_script( 'script2', get_template_directory_uri() . '/js/main.js', array( 'jquery' ), 1.1, true);
 

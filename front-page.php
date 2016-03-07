@@ -55,7 +55,7 @@
 <!-- Video -->
 <div class="frontpage-video">
 <h1 class="frontpage-subheading"> Excitement and Adventure </h1>
-<iframe src="//www.youtube.com/embed/Ji7-d1Z7xy8" 
+<iframe src="//www.youtube.com/v/Ji7-d1Z7xy8" 
 frameborder="0" allowfullscreen class="video"></iframe>
 </div>
 

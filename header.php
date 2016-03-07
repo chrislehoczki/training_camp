@@ -10,7 +10,7 @@
 
 	<body <?php body_class() ?>>  <!-- easy access for css file -->
 
-
+	
 
 	<?php if (is_front_page() ) { ?>
 		<!-- placeholder img for slider -->
@@ -19,10 +19,21 @@
 	<?php get_template_part('slider');
 	 }?>
 
-	
+			<!-- social -->
+	<div class="full-width">
+		<ul class="social-links">
+			<li><img src="<?php bloginfo('template_url'); ?>/images/social/facebook.png" alt="my photo!" /></li>
+			<li><img src="<?php bloginfo('template_url'); ?>/images/social/twitter.png" alt="my photo!" /></li>
+			<li><img src="<?php bloginfo('template_url'); ?>/images/social/Instagram.png" alt="my photo!" /></li>
+			<li><img src="<?php bloginfo('template_url'); ?>/images/social/youtube.png" alt="my photo!" /></li>
+	 	</ul>
+ 	</div>
 
 	<div class="container">
 		<!-- site-header -->
+
+
+
 		<header class="site-header site-nav">
 			
 			<!-- SEARCH FORM -->
