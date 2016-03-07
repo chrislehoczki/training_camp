@@ -1,8 +1,67 @@
 
-
+<!-- Header -->
 <?php get_header(); ?>     
 
+<!-- Intro Text -->
+<div class="intro-text">
+<h2> Unique Cultural Experience </h2>
+<h2> This is around four lines of custom intro text that we shall create later. </h2>
+<h2> This is around four lines of custom intro text that we shall create later. </h2>
+<h2> This is around four lines of custom intro text that we shall create later. </h2>
+</div>
 
+
+<!-- Features -->
+
+<div class="features">
+
+  <div class="row">
+  
+  <?php
+
+  $opinionPosts = new WP_Query('cat=4&posts_per_page=3&orderby=title&order=ASC'); // THIS RETURNS AN OBJECT WITH POSTS FROM OPINION CATEGORY
+  //OTHER = orderby=rand - ranomd page
+  // after loop 
+
+  if ($opinionPosts -> have_posts()) :
+    while ($opinionPosts -> have_posts()) : $opinionPosts -> the_post(); ?>
+      <div class="col-lg-4 col-md-4 col-xs-12">
+      <h2><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h2>
+      <?php  //IMAGES
+        the_post_thumbnail('small-thumbnail');
+      ?>
+      </div>
+    <?php endwhile;
+
+    else : 
+      echo '<p> No Content Found </p>';
+
+    endif;
+    wp_reset_postdata();
+    ?>
+  
+  </div>
+</div>
+
+<!-- PhotoGallery -->
+<?php query_posts('p=35'); ?>
+  <?php while (have_posts()) : the_post(); ?>
+    <h4><?php the_title(); ?></h4>
+    <?php the_content(); ?>
+  <?php endwhile;?>
+
+<!-- Video -->
+<?php query_posts('p=37'); ?>
+  <?php while (have_posts()) : the_post(); ?>
+    <h4><?php the_title(); ?></h4>
+    <?php the_content(); ?>
+  <?php endwhile;?>
+
+
+
+<!-- Recent Posts/News -->
+
+<!--
 <?php
 
 if (have_posts()) :
@@ -21,7 +80,19 @@ if (have_posts()) :
 
   endif; ?>
 
-<!-- WP QUERY TEST -->
+  -->
+
+<!-- Footer Nav with Widgets -->
+
+<!-- Footer -->
+
+<?php
+get_footer();
+?>
+
+
+
+<!--
 
 <?php
 
@@ -41,7 +112,6 @@ if ($opinionPosts -> have_posts()) :
   wp_reset_postdata();
   ?>
 
-  <!-- WP QUERY TEST 2 -->
 
 <?php
 
@@ -61,7 +131,5 @@ if ($opinionPosts -> have_posts()) :
   wp_reset_postdata();
   ?>
 
-<?php
-get_footer();
-?>
+-->
 

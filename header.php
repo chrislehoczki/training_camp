@@ -9,10 +9,17 @@
 	
 
 	<body <?php body_class() ?>>  <!-- easy access for css file -->
-	<img class="placeholder-img" src="<?php bloginfo('template_url'); ?>/images/slide1.jpg" alt="my photo!" >
-<?php 
-get_template_part('slider');
-?>
+
+
+
+	<?php if (is_front_page() ) { ?>
+		<!-- placeholder img for slider -->
+	<img class="placeholder-img" src="<?php bloginfo('template_url'); ?>/images/slide1.jpg" alt="Frontpage of slider for peak fitness." >
+
+	<?php get_template_part('slider');
+	 }?>
+
+	
 
 	<div class="container">
 		<!-- site-header -->
@@ -25,10 +32,8 @@ get_template_part('slider');
 			</div>
 			-->
 	
-
-
-			<h1><a href="<?php echo home_url() ?>"><?php bloginfo('name'); ?></a></h1>
-			<h5><?php bloginfo('description') ?> 
+			
+			<!--<h5><?php bloginfo('description') ?>  -->
 			
 			<!-- Conditional logic based on page -->
 			<?php if (is_page("about-us")) {?>
@@ -37,6 +42,7 @@ get_template_part('slider');
 			
 			</h5>
 			<nav class="site-header"> 
+				<h1 class="logo"><a href="<?php echo home_url() ?>"><?php bloginfo('name'); ?></a></h1>
 				<?php
 				$args = array(
 					'theme_location' => 'primary'
