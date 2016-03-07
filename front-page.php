@@ -28,7 +28,7 @@
       <div class="col-lg-4 col-md-4 col-xs-12">
       <h2><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h2>
       <?php  //IMAGES
-        the_post_thumbnail('small-thumbnail');
+        the_post_thumbnail( 'medium' );
       ?>
       </div>
     <?php endwhile;
@@ -51,15 +51,43 @@
   <?php endwhile;?>
 
 <!-- Video -->
-<?php query_posts('p=37'); ?>
-  <?php while (have_posts()) : the_post(); ?>
-    <h4><?php the_title(); ?></h4>
-    <?php the_content(); ?>
-  <?php endwhile;?>
+
+<iframe src="//www.youtube.com/embed/Ji7-d1Z7xy8" 
+frameborder="0" allowfullscreen class="video"></iframe>
 
 
 
 <!-- Recent Posts/News -->
+
+<div class="news">
+
+  <div class="row">
+  
+  <?php
+
+  $opinionPosts = new WP_Query('cat=5&posts_per_page=3&orderby=title&order=ASC'); // THIS RETURNS AN OBJECT WITH POSTS FROM OPINION CATEGORY
+  //OTHER = orderby=rand - ranomd page
+  // after loop 
+
+  if ($opinionPosts -> have_posts()) :
+    while ($opinionPosts -> have_posts()) : $opinionPosts -> the_post(); ?>
+      <div class="col-lg-4 col-md-4 col-xs-12">
+      <h2><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h2>
+      <?php  //IMAGES
+        the_post_thumbnail( 'medium' );
+      ?>
+      </div>
+    <?php endwhile;
+
+    else : 
+      echo '<p> No Content Found </p>';
+
+    endif;
+    wp_reset_postdata();
+    ?>
+  
+  </div>
+</div>
 
 <!--
 <?php
