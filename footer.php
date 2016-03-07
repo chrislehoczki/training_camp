@@ -3,28 +3,30 @@
 	<div class="footer-widgets clearfix">
 
 	<?php if (is_active_sidebar('footer1')) : ?>
-		<div class="footer-widget-area">
+		<div class="footer-widget-area footer1">
+		<ul>
 		<?php dynamic_sidebar('footer1'); ?>
+		</ul>
 		</div>
 	<?php endif; ?>
 
 	<?php if (is_active_sidebar('footer2')) : ?>
 		<div class="footer-widget-area">
+		<ul>
 		<?php dynamic_sidebar('footer2'); ?>
+		</ul>
 		</div>
 	<?php endif; ?>
 
 	<?php if (is_active_sidebar('footer3')) : ?>
 		<div class="footer-widget-area">
+		<ul>
 		<?php dynamic_sidebar('footer3'); ?>
+		</ul>
 		</div>
 	<?php endif; ?>
 
-	<?php if (is_active_sidebar('footer4')) : ?>
-		<div class="footer-widget-area">
-		<?php dynamic_sidebar('footer4'); ?>
-		</div>
-	<?php endif; ?>
+
 
 	</div>
 

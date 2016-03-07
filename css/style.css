@@ -24,7 +24,6 @@ Use it to make something cool, have fun, and share what you've learned with othe
 }
 
 
-
 html {
 	padding: 0;
 	margin: 0;
@@ -55,10 +54,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /* General Layout */
 div.container {
-	width: 90%;
-	margin: 0 auto;
-	padding-left: 20px;
-	padding-right: 20px;
+	width: 100%;
+
 }
 
 /* Content Area */
@@ -117,32 +114,8 @@ article.post-gallery h2 {
 	text-align: center;
 }
 
-/* Header */
-.site-header {
-	margin-bottom: 20px;
-	padding: 30px 0 0 0;
-	position: fixed;
-	top: 20px;
-	left: 80px;
-	width: 100%;
-	z-index: 999;
-}
 
-.site-header h1 a {
-	margin: 0;
-	text-shadow:0 0 6px rgba(0,0,0,1);
-  	font-size: 1.5em;
-  	color: white;
-}
 
-.site-header h1 a:link,
-.site-header h1 a:visited {
-	text-decoration: none;
-}
-
-.site-header h5 {
-	margin: 0;
-}
 
 /* Standard Nav Menu */
 .site-nav ul {
@@ -157,7 +130,7 @@ article.post-gallery h2 {
 
 .site-nav ul li {
 	list-style: none;
-	float: right;
+	float: left;
 }
 
 .site-nav ul li a:link,
@@ -165,19 +138,57 @@ article.post-gallery h2 {
 	display: block;
 }
 
+
+/* Header */
+.site-header {
+	position: fixed;
+	top: 60px;
+	left: 0px;
+	width: 100%;
+	z-index: 999;
+	height: 100px;
+	transition: all .5s ease-in-out;
+   -moz-transition: all .5s ease-in-out;
+   -webkit-transition: all .5s ease-in-out; 
+  -o-transition: all .5s ease-in-out; 
+}
+
+.site-header h1 a {
+	margin: 0;
+	text-shadow:0 0 6px rgba(0,0,0,1);
+  	font-size: 1.5em;
+  	color: white;
+  	margin-left: 80px;
+  	transition: all .5s ease-in-out;
+   -moz-transition: all .5s ease-in-out;
+   -webkit-transition: all .5s ease-in-out; 
+  -o-transition: all .5s ease-in-out; 
+}
+
+.site-header h1 a:link,
+.site-header h1 a:visited {
+	text-decoration: none;
+}
+
 /* Header Nav Menu */
+
 .site-header nav {
-	margin-top: 30px;
+	margin-top: 0px;
+}
+
+.site-header nav ul {
+	margin-top: 0px;
 }
 
 .site-header nav ul li {
+	float: right;
 	margin-right: 5px;
 }
 
 
-
 .site-header nav ul li a:link,
 .site-header nav ul li a:visited {
+	font-size: 1.1em;
 	padding: 15px 25px;
 	text-decoration: none;
 	border: none;
@@ -187,16 +198,12 @@ article.post-gallery h2 {
 	transition: all 0.5s ease;
 }
 
-.site-header nav ul li a {
+.site-header nav ul li a:hover {
 	color: white;
 	opacity: 1;
 }
 
-.site-header nav ul li a:hover {
-	background-color: black;
-	color: white;
-	opacity: 1;
-}
+
 
 .site-header nav ul li.current-menu-item a:link,
 .site-header nav ul li.current-menu-item a:visited,
@@ -225,10 +232,24 @@ article.post-gallery h2 {
 /* Footer Widget Areas */
 
 .footer-widget-area {
-	width: 25%;
+	width: 33%;
 	float: left;
 	padding-right: 40px;
 	box-sizing: border-box;
+	max-height: 300px;
+}
+
+.footer-widget-area ul {
+	margin-top: 20px;
+	list-style-type: none;
+}
+
+.footer-widget-area h2 {
+	text-align: center;
+}
+
+.footer1 a {
+	font-size: 1.5em;
 }
 
 /* Footer */
@@ -236,6 +257,10 @@ article.post-gallery h2 {
 	margin-top: 30px;
 	border-top: 1px solid #DDD;
 	font-size: 84%;
+}
+
+.textwidget {
+	max-height: 300px;
 }
 
 /* Footer Nav Menu */
@@ -397,18 +422,45 @@ div.hd-search #s {
 	width: 800px;
 	background-color: white;
 	margin: 0px auto;
-	margin-top: -30px;
+	margin-top: -100px;
 	z-index: 10;
 	position: relative;
-	padding: 50px;
+	padding: 50px 50px 20px 50px;
 	display: block;
 }
 
 .features {
+	margin-top: 30px;
+	margin-bottom: 80px;
 	display: block;
 	clear: both;
 	width: 100%;
 	text-align: center;
+	padding: 30px;
+}
+
+.feature-single {
+	padding: 20px;
+}
+
+.feature-single h1,h2 {
+	padding: 20px;
+
+}
+
+.frontpage-photo-gallery {
+	margin-top: 80px;
+}
+
+.frontpage-subheading {
+	text-align: center;
+	font-size: 4em;
+	color: black;
+	font-weight: 400;
+}
+
+.frontpage-video {
+	margin-top: 10px;
 }
 
 .video {
@@ -418,17 +470,38 @@ div.hd-search #s {
     height: 800px
 }
 
+
 .news {
+	margin-top: 80px;
 	display: block;
 	clear: both;
 	width: 100%;
 	text-align: center;
+	height: 450px;
+}
+
+
+
+.wptt_TwitterTweets {
+	margin: 30px 0;
+	height: 300px;
+	overflow: hidden;
 }
 
 /* SLIDER */
 
 .flex-direction-nav a:before {
   color: white;
+
+}
+
+.flex-direction-nav a {
+  width: 50px;
+  height: 50px;
+}
+.flex-next {
+	width: 50px;
+	height: 50px;
 }
 
 .flexslider {
@@ -468,8 +541,8 @@ div.hd-search #s {
 .flex-caption {
   font-family: Aller;
   position: absolute;
-  bottom: 10%;
-  right: 10%;
+  bottom: 150px;
+  right: 150px;
   margin: 0 ;
   padding: 10px;
   color: white;

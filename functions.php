@@ -14,7 +14,6 @@ function learningWordPress_resources() {
 }
 
 
-
 //GET TOP ANCESTOR
 function get_top_ancestor_id() {
 	global $post;
@@ -55,7 +54,7 @@ function learningWordPress_setup() {
 	add_image_size('small-thumbnail', 180, 120, true); //w, height, hard crop
 	//USING ARRAY to specify where to crop
 	add_image_size('banner-img', 920, 210, array('left', 'center'));
-	
+
 
 	//ADD POST FORMAT SUPPORT
 	add_theme_support('post-formats', array('aside', 'gallery', 'link'));
