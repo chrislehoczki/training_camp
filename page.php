@@ -3,36 +3,38 @@
 <?php
 
 get_header();
+?>
+
+
+
+<?php
+
 
 if (have_posts()) :
 	while (have_posts()) : the_post(); ?>
 	
-	<article class="post page">
+	<article class="">
 
+	<div class="content-section">
+		<div class="row post-header">
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<div class="post-header-img">
+					<?php the_post_thumbnail('post-header'); ?>
+				</div>
+			</div>
 
-	<?php // ONLY SHOW CODE IF HAVE CHILDREN 
-
-		if (has_children() OR $post->post_parent > 0) { ?>
-
-	<nav class="site-nav children-links clearfix">
-		<span class="parent-link"><a href="<?php echo get_the_permalink(get_top_ancestor_id()); ?>"><?php echo get_the_title(get_top_ancestor_id()); ?></a>  </span>
-		
-		<ul class="children-links">
-			<?php 
-			$args = array(
-				'child_of' => get_top_ancestor_id(),
-				'title_li' => ''
-				)
-
-			?>
-
-			<?php wp_list_pages($args) ?>
-		</ul>
-	</nav>
-
-	<?php } ?>
-	<h2><?php the_title() ?></h2>
-	<?php the_content() ?>
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<h1 class="post-title"><?php the_title() ?></h1>
+			</div>
+		</div>
+	</div>
+	
+	<div class="content-section">
+		<div class="post-content">
+			<?php the_content() ?>
+		</div>
+	</div>
+	
 	</article>
 
 
@@ -42,6 +44,9 @@ if (have_posts()) :
 		echo '<p> No Content Found </p>';
 
 	endif;
+?>
 
+
+<?php
 get_footer();
 ?>

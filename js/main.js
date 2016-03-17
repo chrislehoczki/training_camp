@@ -1,31 +1,67 @@
 
 
+
 jQuery(function ($) { 
 	console.log("loaded main.js")
 
+
+  //REMOVE TITLE FROM HYPERLING
+
+  $("a").attr("title", "")
+
+  //CHANGE NAV ON SCROLL
 	function changeNavStyle(ev){
 
 
 		var offset = window.pageYOffset;
 
-    if(offset>400) {
+    if(offset>200) {
+
+//HEADER BUTTONS
+      $(".header-buttons").css({
+   'position' : 'fixed',
+   'top' : '0px',
+
+   'right' : '0px',
+   'z-index' : '1000'
+                });
+
+    $(".header-buttons button").css({
+   'display' : 'inline',
+   'width' : '120px',
+   'height' : '40px',
+   'margin-top' : '5px'
+                });
 
 
 
-
-    	$(".site-header").css("background-color", "black").css("opacity", "0.9").css("top", "50px")
-    	$(".site-header").find("h1").css("margin-top", "20px")
-    	$(".site-header").find("ul").css("margin-top", "-90px")
+  $(".social-links").css({
+    'height': '50px'
+                });
 
     }
-    else if (offset<400) {
-    	$(".site-header").css("background-color", "").css("opacity", "1").css("top", "200px")
-    	$(".site-header").find("h1").css("margin-top", "0px")
-    	$(".site-header").find("ul").css("margin-top", "0px")
+    else if (offset<200) {
+
+      $(".header-buttons").css({
+   'position' : 'relative',
+                });
+
+    $(".header-buttons button").css({
+   'display' : 'block',
+   'width' : '170px',
+   'height' : '50px',
+   'margin-top' : '0px'
+                });
+
+  $(".social-links").css({
+    'height': 'auto'
+                });
+
+
+
+
     }
 }
-
-
 
 
 
@@ -36,26 +72,24 @@ window.onscroll=changeNavStyle
 
 //$(window).load(function() {
 
-  
-  $( ".placeholder-img" ).remove()
 
   $('.flexslider').flexslider({
-    animation: "fade",
+    animation: "slide",
     slideshowSpeed: 4000,
     fadeFirstSlide: false,
-        start: function(){
-         $('.flexImages').show(); 
-    },
+        start: function (slider) {
+       // lazy load
+       $(slider).find("img.lazy").each(function () {
+          var src = $(this).attr("data-src");
+          $(this).attr("src", src).removeAttr("data-src");
+       });
+     }
   });
 
 
 
 //});
 
-
-$("body").click(function() {
-	console.log("working")
-})
 
 
 	})

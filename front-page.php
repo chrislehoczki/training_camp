@@ -2,71 +2,111 @@
 <!-- Header -->
 <?php get_header(); ?>     
 
-<!-- Intro Text -->
-<div class="intro-text">
-<h2> <strong> A Unique Training Experience </strong></h2>
-<h3> Smooth roads, mountain trails, olympic size pools and performance nutrition. </h3>
-<h3> Take control and develop a renewed and deep passion for your sport </h3>
+<!-- SLIDER WITH INFO -->
+
+
+
+<div class="content-section flexslider-holder">
+<?php get_template_part("slider") ?>
 </div>
 
 
-<!-- Features -->
 
-<div class="features">
-  <h1 class="frontpage-subheading"> We Offer </h1>
-  <div class="row">
-  <?php
 
-  $opinionPosts = new WP_Query('cat=4&posts_per_page=3&orderby=title&order=ASC'); // THIS RETURNS AN OBJECT WITH POSTS FROM OPINION CATEGORY
-  //OTHER = orderby=rand - ranomd page
-  // after loop 
+<!-- RUN BIKE SWIM -->
 
-  if ($opinionPosts -> have_posts()) :
-    while ($opinionPosts -> have_posts()) : $opinionPosts -> the_post(); ?>
-      <a href="<?php the_permalink() ?>">
-      <div class="col-lg-4 col-md-4 col-xs-12 feature-single">
-      <h2><?php the_title() ?></h2>
-      <?php  //IMAGES
-        the_post_thumbnail( 'medium' );
+
+  <div class="features">
+
+
+    <div class="row">
+    <?php
+
+    $featurePosts = new WP_Query('cat=4&posts_per_page=3&orderby=title&order=ASC'); // THIS RETURNS AN OBJECT WITH POSTS FROM OPINION CATEGORY
+    //OTHER = orderby=rand - ranomd page
+    // after loop 
+
+    if ($featurePosts -> have_posts()) :
+      while ($featurePosts -> have_posts()) : $featurePosts -> the_post(); ?>
+        
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 feature-single">
+        <div class="content-section">
+        <a href="<?php the_permalink() ?>"><h2><?php the_title() ?></h2>
+        <?php  //IMAGES
+          the_post_thumbnail( 'medium' );
+        ?>
+        </a>
+        <p>
+        <?php  //IMAGES
+          the_excerpt();
+        ?>
+        </p>
+        <a href="<?php the_permalink() ?>"> Read More </a>
+        </div>
+        </div>
+      <?php endwhile;
+
+      else : 
+        echo '<p> No Content Found </p>';
+
+      endif;
+      wp_reset_postdata();
       ?>
-      </div>
-      </a>
-    <?php endwhile;
+    
+    </div>
+  </div>
 
-    else : 
-      echo '<p> No Content Found </p>';
 
-    endif;
-    wp_reset_postdata();
+<!-- DESCRIPTION -->
+
+<div class="content-section">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="frontpage-intro"> 
+      <?php
+        if (have_posts()) :
+          while (have_posts()) : the_post(); ?>
+
+          <div class="frontpage-content">
+            <?php the_content() ?>
+          </div>
+
+      <?php endwhile;
+      endif;
     ?>
-  
+      </div> 
+    </div>
+    <div class="col-md-3">
+      <div class="frontpage-testimonials"> 
+     <h1> Testimonials </h1> 
+
+      <?php
+      $new = new WP_Query('post_type=testimonial');
+        while ($new->have_posts()) : $new->the_post(); ?>
+
+        <p><?php the_title() ?></p>
+        <p>
+        <?php  //IMAGES
+          the_content();
+        ?>
+        </p>
+
+      <?php
+        endwhile;
+
+        ?>
+      </div> 
+    </div>
   </div>
 </div>
 
-<!-- PhotoGallery -->
-<div class="frontpage-photo-gallery">
-<h1 class="frontpage-subheading"> Unique Experiences </h1>
-<?php query_posts('p=35'); ?>
-  <?php while (have_posts()) : the_post(); ?>
-    <?php the_content(); ?>
-  <?php endwhile;?>
-</div>
+<!-- News -->
 
-<!-- Video -->
-<div class="frontpage-video">
-<h1 class="frontpage-subheading"> Excitement and Adventure </h1>
-<iframe src="//www.youtube.com/v/Ji7-d1Z7xy8" 
-frameborder="0" allowfullscreen class="video"></iframe>
-</div>
-
-
-<!-- Recent Posts/News -->
-
-<div class="news">
-  <h1 class="frontpage-subheading"> Recent News </h1>
-  <div class="row">
-  
-  <?php
+<div class="content-section">
+<div class="frontpage-news">
+<h1> Recent News </h1>
+<div class="row">
+<?php
 
   $opinionPosts = new WP_Query('cat=5&posts_per_page=3&orderby=title&order=ASC'); // THIS RETURNS AN OBJECT WITH POSTS FROM OPINION CATEGORY
   //OTHER = orderby=rand - ranomd page
@@ -74,14 +114,16 @@ frameborder="0" allowfullscreen class="video"></iframe>
 
   if ($opinionPosts -> have_posts()) :
     while ($opinionPosts -> have_posts()) : $opinionPosts -> the_post(); ?>
-      <a href="<?php the_permalink() ?>">
-      <div class="col-lg-4 col-md-4 col-xs-12">
-      <h2><?php the_title() ?></h2>
-      <?php  //IMAGES
-        the_post_thumbnail( 'medium' );
-      ?>
+      <div class="news-item">
+        <a href="<?php the_permalink() ?>">
+          <div class="col-lg-4 col-md-4 col-xs-12">
+          <h3><?php the_title() ?></h3>
+          <?php  //IMAGES
+            the_post_thumbnail( 'medium' );
+          ?>
+          </div>
+        </a>
       </div>
-      </a>
     <?php endwhile;
 
     else : 
@@ -90,79 +132,61 @@ frameborder="0" allowfullscreen class="video"></iframe>
     endif;
     wp_reset_postdata();
     ?>
-  
-  </div>
+</div>
+</div>
 </div>
 
-<!--
-<?php
 
-if (have_posts()) :
-  while (have_posts()) : the_post(); ?>
-  
-  <article class="post page">
+<!-- FOOTER -->
 
-  <?php the_content() ?>
-  </article>
-
-
-  <?php endwhile;
-
-  else : 
-    echo '<p> No Content Found </p>';
-
-  endif; ?>
-
-  -->
-
-<!-- Footer Nav with Widgets -->
-
-<!-- Footer -->
-
-<?php
-get_footer();
-?>
+<?php get_footer(); ?>  
 
 
 
-<!--
+    <!-- SAVE THIS QUERY FOR LATER BASED ON POST TYPE
+     <?php
 
-<?php
+      $args = array(
+      'post_type' => 'post',
+      'tax_query' => array(
+      'relation' => 'OR',
+      array(
+      'taxonomy' => 'category',
+      'field'    => 'slug',
+      'terms'    => array( 'quotes' ),
+      ),
+      array(
+      'taxonomy' => 'post_format',
+      'field'    => 'slug',
+      'terms'    => array( 'post-format-quote' ),
+      ),
+      ),
+      );
 
-$opinionPosts = new WP_Query('cat=5&posts_per_page=2&orderby=title&order=ASC'); // THIS RETURNS AN OBJECT WITH POSTS FROM OPINION CATEGORY
-//OTHER = orderby=rand - ranomd page
-// after loop 
 
-if ($opinionPosts -> have_posts()) :
-  while ($opinionPosts -> have_posts()) : $opinionPosts -> the_post(); ?>
-    <h2><?php the_title() ?></h2>
-  <?php endwhile;
+    
+        
 
-  else : 
-    echo '<p> No Content Found </p>';
+      $testimonials = new WP_Query( $args );
+    //OTHER = orderby=rand - ranomd page
+    // after loop 
 
-  endif;
-  wp_reset_postdata();
-  ?>
+    if ($testimonials -> have_posts()) :
+      while ($testimonials -> have_posts()) : $testimonials -> the_post(); ?>
+      
+        <p><?php the_title() ?></p>
+        <p>
+        <?php  //IMAGES
+          the_excerpt();
+        ?>
+        </p>
 
+      <?php endwhile;
 
-<?php
+      else : 
+        echo '<p> No Content Found </p>';
 
-$opinionPosts = new WP_Query('cat=4&posts_per_page=3&orderby=title&order=ASC'); // THIS RETURNS AN OBJECT WITH POSTS FROM OPINION CATEGORY
-//OTHER = orderby=rand - ranomd page
-// after loop 
-
-if ($opinionPosts -> have_posts()) :
-  while ($opinionPosts -> have_posts()) : $opinionPosts -> the_post(); ?>
-    <h2><?php the_title() ?></h2>
-  <?php endwhile;
-
-  else : 
-    echo '<p> No Content Found </p>';
-
-  endif;
-  wp_reset_postdata();
-  ?>
-
--->
-
+      endif;
+      wp_reset_postdata();
+      ?>
+      -->

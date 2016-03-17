@@ -1,17 +1,37 @@
 <?php 
+
+add_action( 'init', 'create_post_type' );
+function create_post_type() {
+  register_post_type( 'testimonial',
+    array(
+      'labels' => array(
+        'name' => __( 'Testimonials' ),
+        'singular_name' => __( 'Testimonial' )
+      ),
+      'public' => true,
+      'has_archive' => true,
+    )
+  );
+}
+
+
 add_action('wp_enqueue_scripts', 'learningWordpress_resources');
 
 function learningWordPress_resources() {
 	//wp_enqueue_style('style', get_stylesheet_uri());
 	
-	wp_enqueue_style( 'bootstrap','https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css',false,'1.1','all');
-	wp_enqueue_style( 'fontawesome','https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css',false,'1.1','all' );
+	//wp_enqueue_style( 'bootstrap','https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css',false,'1.1','all');
+	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css',false,'1.1','all');
+	//wp_enqueue_style( 'fontawesome','https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css',false,'1.1','all' );
 	wp_enqueue_style( 'flexslider', get_template_directory_uri() . '/css/flexslider.css',false,'1.1','all');
 	wp_enqueue_style( 'style', get_template_directory_uri() . '/css/style.css',false,'1.1','all');
+	wp_enqueue_style( 'style','https://fonts.googleapis.com/css?family=Anton',false,'1.1','all');
 
+	
 
-	wp_enqueue_script( 'script', get_template_directory_uri() . '/js/jquery.flexslider.js', array ( 'jquery' ), 1.1, true);
-	wp_enqueue_script( 'script2', get_template_directory_uri() . '/js/main.js', array( 'jquery' ), 1.1, true);
+	wp_enqueue_script( 'bootstrapjs', 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', array ( 'jquery' ), 1.1, true);
+	wp_enqueue_script( 'flexslider', get_template_directory_uri() . '/js/jquery.flexslider.js', array ( 'jquery' ), 1.1, true);
+	wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.js', array( 'jquery' ), 1.1, true);
 
 }
 
@@ -54,12 +74,13 @@ function learningWordPress_setup() {
 	add_theme_support('post-thumbnails');
 	//add image sizes
 	add_image_size('small-thumbnail', 180, 120, true); //w, height, hard crop
+	add_image_size('post-header', 600, 400, array('left', 'center'));
 	//USING ARRAY to specify where to crop
 	add_image_size('banner-img', 920, 210, array('left', 'center'));
 
 
 	//ADD POST FORMAT SUPPORT
-	add_theme_support('post-formats', array('aside', 'gallery', 'link'));
+	add_theme_support('post-formats', array('aside', 'gallery', 'link', 'quote'));
 
 	//ADD WIDGETS
 	add_theme_support('widgets');
@@ -108,5 +129,7 @@ function ourWidgetsInit() {
 
 //ARG 1 - when, ARG2- function
 add_action('widgets_init', 'ourWidgetsInit');
+
+require_once('wp_bootstrap_navwalker.php');
 
 ?>

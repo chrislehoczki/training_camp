@@ -1,12 +1,32 @@
 <article class="post <?php if ( has_post_thumbnail() ) { ?>has-thumbnail<?php }?>">
-	<div class="post-thumbnail">
-		<a href="<?php the_permalink(); ?>">
-		<?php  //IMAGES
-			the_post_thumbnail('small-thumbnail');
-		?>
+	<div class="content-section">
+		<div class="row post-header">
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<div class="post-header-img">
+				<?php  //IMAGES
+					the_post_thumbnail('post-header');
+				?>
+				</div>
+			</div>
+
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<h1 class="post-title"><?php the_title() ?></h1>
+			</div>
 		</div>
-	</a>
-	<h2><a href="<?php the_permalink(); ?>"><?php the_title() ?></a></h2>
+	</div>
+
+	<div class="content-section">
+	<?php 
+
+	if ( in_category('Feature') ) {  ?>
+			<div class="post-content">
+			<?php the_content() ?>
+			</div>
+	</div>
+			<?php }
+			else {
+	?>
+
 	<p class="post-info"><?php the_time('F jS, Y'); ?> | <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>"><?php the_author(); ?></a> | Posted in 
 
 	<?php 
@@ -52,6 +72,13 @@
 	}
 
 	?>
+
+
+
+
+	<?php } ?>
+	
+	
 
 
 	
